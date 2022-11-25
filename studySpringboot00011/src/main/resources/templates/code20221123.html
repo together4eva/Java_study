@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  hello world
+    <hr>
+    cline에서 server로 요청
+    <form action="/code20221123" method="get">
+        <input name="exampleKey" type="text">
+        <input type="submit">
+    </form>
+    <hr>
+    <p th:text="${exampleReturn}"></p>
+
+</body>
+</html>

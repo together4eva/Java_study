@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/graph0001.css">
+</head>
+<body>
+  <p>hello world</p>
+    <div class="grid_example">
+        <div class="item_1"></div>
+        <div class="item_2">
+<!--
+            th:attrappend : th타임리프 문법 중에 특정 tag의 속성을 적용
+            th:attrappend="style=${}" : tag의 style속성을 모델값으로 적용 : ${} KEY값 넣는 위치
+-->
+            <div th:attrappend="style=${graphData0001}"></div>
+            <div style="background-color:red; height:100px">graph1 : [[${graphData0001}]]</div>
+            <div>graph2</div>
+        </div>
+        <div class="item_3">
+            <div th:attrappend="style=${graphData0011}"></div>
+            <div th:attrappend="style=${graphData0012}"></div>
+            <div th:attrappend="style=${graphData0013}"></div>
+        </div>
+    </div>
+</body>
+</html>

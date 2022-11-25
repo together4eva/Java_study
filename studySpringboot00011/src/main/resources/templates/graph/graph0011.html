@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--
+    <script> : script tag로 HTML DOM구조의 자바스크립트 담당하는 영역이자 랜더링
+    : 자바스크립트 코드 작성 영역
+    src : 우측 URL주소의 코드를 연결
+-->
+    <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+
+</head>
+<body>
+    <form action="graph0011" method="get">
+        <input type="text" name="xdata">
+        <input type="text" name="ydata">
+        <button>전송</button>
+    </form>
+
+    <div id='myDiv'></div>
+<!--
+    HTML, JS : 인터프린트 : 위에서 아래로 1개씩 실행
+    *하단에 있는 함수, 변수를 윗줄 코드에서 쓴다고 가정하면 실행이 불가능
+    : 상단에 있는 myDiv ID를 조회하는 자바스크립트 코드가 있으므로,
+    자바스크립트 코드는 하단에 있어야 함.
+-->
+    <script th:inline="javascript">
+
+    /*<![CDATA[*/
+        function search() {
+        const searchWord = document.getElementById('test0002');
+        const page = /*[[${test}]]*/;
+
+    }
+    search();
+    /*]]>*/
+  </script>
+<!-- th:inline : 타임리프 문법으로 자바스크립트 안에 model KEY값을 넣을 수 있도록 구성  -->
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+        var trace1 = {
+            type: 'bar',
+            x: [1, 2, 3, 4, /*[[${xdata1}]]*/],
+            y: [5, 10, 2, 8, /*[[${ydata1}]]*/],
+            marker: {
+                color: '#C8A2C8',
+                line: {
+                    width: 2.5
+                 }
+            }
+        };
+
+        var data = [ trace1 ];
+
+        var layout = {
+            title: 'Responsive to window\'s size!',
+            font: {size: 18}
+        };
+
+        var config = {responsive: true}
+
+        Plotly.newPlot('myDiv', data, layout, config );
+    /*]]>*/
+    </script>
+
+</body>
+<!--
+1. form tag를 사용하여 x데이터, y데이터를 입력받고 서버에 전달하여 (@RequestParam 사용)
+구현된 그래프에 적용하여 출력하시오
+
+2. https://plotly.com/javascript/ 사이트에 있는 그래프 중 자유롭게 1개를 구현하여 출력하시오.
+단, 1번문제의 form tag로 데이터 입력받고, 배열로 model에 저장하여 타임리프에 배열 출력하는 each문을 사용하여 출력하시오.
+-->
+</html>
