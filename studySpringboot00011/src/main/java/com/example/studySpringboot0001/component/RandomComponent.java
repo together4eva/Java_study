@@ -14,10 +14,6 @@ public class RandomComponent {
         return Integer.toString((int)(Math.random()*maxInt));
     }
 
-    public static int randomInt(int maxInt) {
-        return (int)(Math.random()*maxInt);
-    }
-
     public static String randomColor() {
         String[] randomColor = {"yellow","red","blue","black"};
         //random(4) : 랜덤으로 maxRandom 인자값 기준으로 뽑기
@@ -48,5 +44,8 @@ public class RandomComponent {
 
         String[] result = {data0011.toString(), data0012.toString(), data0013.toString()};
         return result;
+    }
+    public static int randomInt(int maxInt) {
+        return (int)(Math.random()*maxInt);
     }
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+</head>
+
+<script th:inline="javascript"></script>
+<body>
+  <form action="testt" method="get">
+
+      x :<input type="text" name="inputDatatest_x">
+      y :<input type="text" name="inputDatatest_y">
+      <button>전송</button>
+
+<!--      <div th:attrappend="style=${graphData0011}"></div>-->
+  </form>
+  <div id = 'myDiv'></div>
+  <script th:inline="javascript">
+
+/*<![CDATA[*/
+    var trace1 = {
+  type: 'bar',
+  x: [1, 2, 3, 4, /*[[${graphData_x}]]*/],
+  y: [5, 10, 2, 8, /*[[${graphData_y}]]*/],
+  marker: {
+      color: '#C8A2C8',
+      line: {
+          width: 2.5
+      }
+  }
+};
+
+var data = [ trace1 ];
+
+var layout = {
+  title: 'Responsive to window\'s size!',
+  font: {size: 18}
+};
+
+var config = {responsive: true}
+
+Plotly.newPlot('myDiv', data, layout, config );
+/*]]>*/
+    </script>
+</body>
+
+</body>
+</html>

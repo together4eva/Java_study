@@ -28,15 +28,6 @@ import static com.example.studySpringboot0001.component.RandomComponent.*;
 //@RequestParam : 클라이언트에서 받은 데이터를 연결 (KEY값 : value = name)
 //model : 타임리프(HTML)에 데이터를 전달하는 장바구니
 
-//todo 20221125
-// 1. 자바스크립트와 타임리프 연동 (CSS와 타임리프 연동)
-// <script th:inline="javascript">
-//    /*<![CDATA[*/
-// 2. 그래프 연동 (javascript)
-// plotly.com/javascript/ 활용
-
-
-
 @Controller
 public class graphController {
 
@@ -72,45 +63,8 @@ public class graphController {
         String resultGraphData = inputGraphData2(inputData);
 //        String graphData = "background: conic-gradient(#3F8BC9 30%, #F2F2F2 30%)";
         model.addAttribute("graphData", resultGraphData);
-        model.addAttribute("graphDadaCount", "30.2");
+        model.addAttribute("graphDataCount", "30.2");
         return "graph/graph0002";
-    }
-
-    @GetMapping("graph0011")
-    public String graph0011(
-            @RequestParam(value = "xdata", required = false)String xdata,
-            @RequestParam(value = "ydata", required = false)String ydata,
-            Model model) {
-        model.addAttribute("xdata1", xdata);
-        model.addAttribute("ydata1", ydata);
-        return "graph/graph0011";
-    }
-
-    @GetMapping("graph0012")
-    public String graph0012(Model model) {
-        int[] test = {
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10),
-                randomInt(10)};
-        model.addAttribute("test",test);
-        return "graph/graph0012";
-    }
-
-    @GetMapping("graph0015")
-    public String graph0015(Model model) {
-        model.addAttribute("test", "test0001");
-        return "graph/graph0015";
     }
 
     private String inputGraphData2(String data1) {
@@ -145,6 +99,43 @@ public class graphController {
         result += "px";
         return result;
     }
+    @GetMapping("graph0011")
+    public String graph0011(Model model){
+        model.addAttribute("xdata1",5);
+        model.addAttribute("ydata1",12);
+        return "graph/graph0011";
+    }
+    @GetMapping("graph0012")
+    public String graph0012(Model model){
+        int[] test ={
+                randomInt(10),
+                randomInt(10),
+                randomInt(10),
+                randomInt(10),
+                randomInt(10),
+                randomInt(10),
+                randomInt(10),
+                randomInt(10),
+                randomInt(10),
+                randomInt(10),
+                randomInt(10),
+        };
+                model.addAttribute("test",test);
+        return "graph/graph0012";
+    }
 
+////////////////////////////////////////////////////////////////////////
+    @GetMapping("testt")
+    public String testt(
+            @RequestParam(value = "inputDatatest_x", required = false)String inputData_x,
+            @RequestParam(value = "inputDatatest_y", required = false)String inputData_y,
+            Model model){
+        model.addAttribute("graphData_x", inputData_x);
+        model.addAttribute("graphData_y", inputData_y);
+        return "graph/testt";
+    }
+
+///////////////////////////////////////////////////////////////////
 
 }
+

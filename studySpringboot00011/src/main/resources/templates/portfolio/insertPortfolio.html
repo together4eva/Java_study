@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  hello world
+    <form action="insertPortfolio" method="post">
+<!--        <form action="insertPortfolio" method="get">-->
+        <input type ="text" name="title">
+        <input type ="text" name="subject">
+        <input type ="text" name="category">
+        <input type ="text" name="date">
+        <input type ="text" name="link">
+        <button>전송</button>
+
+    </form>
+        <table>
+            <tr th:each="item : ${arr}">
+                <td th:text="${item.getTitle()}"></td>
+                <td th:text="${item.getSubject()}"></td>
+                <td th:text="${item.getCategory()}"></td>
+                <td th:text="${item.getDate()}"></td>
+                <td th:text="${item.getLink()}"></td>
+            </tr>
+        </table>
+</body>
+</html>
