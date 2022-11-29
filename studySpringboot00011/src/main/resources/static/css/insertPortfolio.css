@@ -1,3 +1,4 @@
+
 .container_outer {
     place-items: center;
     display : grid;
@@ -11,4 +12,16 @@
     display : grid;
     align-content: center;
     justify-content: space-around;
+}
+table {
+    width: 400px;
+    height: 400px;
+}
+td {
+    width: 400px;
+}
+img {
+    width: auto; height: auto;
+    max-width: 100px;
+    max-height: 100px;
 }

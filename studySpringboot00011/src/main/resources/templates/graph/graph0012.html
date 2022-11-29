@@ -1,34 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+    <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
 </head>
 <body>
-<table>
+    <table>
 <!--
-  th:each 타임리프 문법으로 배열을 순회하여 하나씩 출력
-  item :${test} : test라는 배열 key값의 한 개 씩 꺼내와 item이라는 변수명에 할당
+        th:each : 타임리프 문법으로 배열을 순회하여 하나씩 출력
+        "item : ${test}" : test라는 배열 KEY값의 한 개씩 꺼내와 item이라는 변수명에 할당
 -->
-  <tr th:each="item : ${test}">
-    <td th:text="${item}"></td>
-    <td th:text="${item}"></td>
-    <td th:text="${item}"></td>
-    <td th:text="${item}"></td>
-  </tr>
-</table>
-<div id = 'myDiv'></div>
-  <script th:inline="javascript">
-  /*<![CDATA[*/
-  console.log(/*[[${test}]]*/);
-
-  alert(/*[[${test}]]*/);
+        <tr th:each="item : ${test}">
+            <td th:text="${item}"></td>
+            <td th:text="${item}"></td>
+            <td th:text="${item}"></td>
+            <td th:text="${item}"></td>
+        </tr>
+    </table>
+    <div id="myDiv"></div>
 
 
-function makeTrace(i) {
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+    console.log(/*[[${test}]]*/);
+        function makeTrace(i) {
     return {
-        y: Array.apply(null, Array(10)).map(() => Math.random()),
+        y: /*[[${test}]]*/,
         line: {
             shape: 'spline' ,
             color: 'red'
@@ -78,7 +76,6 @@ Plotly.newPlot('myDiv', [0, 1, 2, 3].map(makeTrace), {
     }],
 });
 /*]]>*/
-  </script>
-
+    </script>
 </body>
 </html>
