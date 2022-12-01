@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/insertPortfolio.css">
+</head>
+<body>
+  <div class="container_outer">
+  <div class="container_core">
+      <div class="container_inner">
+            <form action="insertPortfolio" method="post" enctype="multipart/form-data">
+<!--                multiple :
+                문자는 메모리에 적재해서 바로 전달 > 이미지?
+                이미지는 RGB 데이터를 byte[]배열로 저장 > 배열데이터를 순차적으로 서버에 전달
+                하나의 이미지를 배열로 조각조각 내서 전달 : 조각조각 = multiple
+-->
+                <input multiple="multiple" type="file" name="file_upload"/>
+                <input type="text" name="title">
+                <input type="text" name="subject">
+                <input type="text" name="category">
+                <input type="text" name="date">
+                <input type="text" name="link">
+                <button>전송</button>
+            </form>
+      </div>
+      <div class="container_inner">
+            <table class="img_size">
+                <tr th:each="item : ${arr}">
+                    <td th:text="${item.getTitle()}"></td>
+                    <td th:text="${item.getSubject()}"></td>
+                    <td th:text="${item.getCategory()}"></td>
+                    <td th:text="${item.getDate()}"></td>
+                    <td th:text="${item.getLink()}"></td>
+                    <td th:text="${item.getId()}"></td>
+                    <td th:text="${item.getEmail()}"></td>
+                    <td th:text="${item.getName()}"></td>
+<!--                @ : URL주소를 지칭 : http://192.168.40.100.. > 절대값
+                    @{${imgLink}} : URL주소를 입력하면 리턴받는 ResponseEntity로 이미지 출력
+                    ex) http://localhost:8080/image/213.png 호출 시 이미지 출력
+-->
+<!--                   @{${item.getLink()}} >> URL주소로 이미지 ResponseEntity 받아옴 -->
+                    <td><img th:src="@{${item.getLink()}}"></td>
+                </tr>
+            </table>
+      </div>
+  </div>
+  </div>
+  <a href="/listPortfolio">포트폴리오 목록보기</a>
+</body>
+</html>

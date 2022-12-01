@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/list_portfolio.css">
+</head>
+<body>
+<!--header layout-->
+<div class="ssg_header_mini react-area">
+    <div class="ssg_header_inner">
+        <div class="ssg_gnb_main">
+            <h1 class="ssg_gnb_logo">
+                <a href="https://localhost:8080/" class="ssg_logo_link clickable">MyHome</a>
+            </h1>
+            <div class="ssg_gnb_search">
+                <a href="https://localhost:8080/listPortfolio" class="ssg_logo_link clickable">
+                    InsertPage
+                </a>
+            </div>
+            <div class="ssg_gnb_search">
+                <a href="https://localhost:8080/insertPortfolio" class="ssg_logo_link clickable">
+                    ListPage
+                </a>
+            </div>
+        </div>
+
+        <div class="gnb_renew_menu">
+            <ul>
+                <li>
+                    <a href="https://localhost:8080/login">
+                        <img src="icon/icon_example1.png" alt="로그인">
+                    </a>
+                </li>
+                <li><a href="https://localhost:8080/insertAccount">회원가입</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="ssg_header_inner">
+    <div>
+        intro page
+    </div>
+</div>
+</body>
+</html>
+<!--
+index.html : 다른 페이지에 연결하는 메인페이지
+--rps.html
+--account.html
+-->
+
+<!--
+    href : redirect 페이지 전환 연결 : 페이지 바꿔서 이동
+    "/hello" : localhost:8080/hello 로 연결
+-->
+
+
+
+
+<!--<div th:if="${not #strings.isEmpty(examData)}"> ... </div>-->
+
+<!--  <span th:if="${not #strings.isEmpty(user.id)}"
+th:text="${user.id}"></span>-->
+
+<!--<span th:if="${#strings.isEmpty(user.id)}"
+th:text="${넣고싶은내용}"></span>-->

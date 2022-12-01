@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+</head>
+<body>
+<!--header area-->
+<div class="ssg_header_mini">
+  <div class="ssg_header_inner">
+    <div class="ssg_gnb_main">
+      <h1 class="ssg_gnb_logo">
+        <a href="https://localhost:8080/" class="ssg_logo_link clickable">MyHome</a>
+      </h1>
+      <div class="ssg_gnb_search">
+        <a href="https://localhost:8080/listPortfolio" class="ssg_logo_link clickable">
+          InsertPage
+        </a>
+      </div>
+      <div class="ssg_gnb_search">
+        <a href="https://localhost:8080/insertPortfolio" class="ssg_logo_link clickable">
+          ListPage
+        </a>
+      </div>
+    </div>
+
+    <div class="gnb_renew_menu">
+      <ul>
+        <li>
+          <a href="https://localhost:8080/login">
+            <img src="icon/account_signin.png" alt="로그인">
+          </a>
+        </li>
+        <li><a href="https://localhost:8080/insertAccount">
+          <img src="icon/account_signup.png" alt="회원가입">
+        </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--main area-->
+<table>
+  <tr>
+    <th>id</th>
+    <th>email</th>
+    <th>name</th>
+  </tr>
+  <tr th:each="item : ${signup_list}">
+    <td th:text="${item.getId()}"></td>
+    <td th:text="${item.getEmail()}"></td>
+    <td th:text="${item.getName()}"></td>
+  </tr>
+</table>
+</form>
+</div>
+</body>
+</html>

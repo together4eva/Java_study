@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="/css/graph.css">
+</head>
+<body>
+  <div class="container">
+    <div class="graph0001" style="background-color:gray;"><div style="height:${graph0001_height};"></div> data : <p th:text="${graph0001}"></p></div>
+    <div class="graph0002" style="height:${graph0002_height}; background-color:blue;">data : <p th:text="${graph0002}"></p></div>
+    <div class="graph0003" style="height:${graph0003_height}px; background-color:red;">data : <p th:text="${graph0003}"></p></div>
+      <div class="graph0003" style="height:${graph0003_height}px; background-color:red;">data : <b>[[${graph0002_height}]]</b></div>
+      <div class="graph0002" th:attrappend="style=${graph0002_height}">12312</div>
+      <div class="progress-bar">
+          <div class="progress"> </div>
+      </div>
+      <div class="donut" data-percent="85.4"></div>
+  </div>
+
+
+
+
+</body>
+</html>

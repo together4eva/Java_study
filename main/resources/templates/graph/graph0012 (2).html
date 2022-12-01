@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+</head>
+<body>
+    <table>
+<!--
+        th:each : 타임리프 문법으로 배열을 순회하여 하나씩 출력
+        "item : ${test}" : test라는 배열 KEY값의 한 개씩 꺼내와 item이라는 변수명에 할당
+-->
+        <tr th:each="item : ${test}">
+            <td th:text="${item}"></td>
+            <td th:text="${item}"></td>
+            <td th:text="${item}"></td>
+            <td th:text="${item}"></td>
+        </tr>
+    </table>
+    <div id="myDiv"></div>
+
+
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+    console.log(/*[[${test}]]*/);
+        function makeTrace(i) {
+    return {
+        y: /*[[${test}]]*/,
+        line: {
+            shape: 'spline' ,
+            color: 'red'
+        },
+        visible: i === 0,
+        name: 'Data set ' + i,
+    };
+}
+
+Plotly.newPlot('myDiv', [0, 1, 2, 3].map(makeTrace), {
+    updatemenus: [{
+        y: 0.8,
+        yanchor: 'top',
+        buttons: [{
+            method: 'restyle',
+            args: ['line.color', 'red'],
+            label: 'red'
+        }, {
+            method: 'restyle',
+            args: ['line.color', 'blue'],
+            label: 'blue'
+        }, {
+            method: 'restyle',
+            args: ['line.color', 'green'],
+            label: 'green'
+        }]
+    }, {
+        y: 1,
+        yanchor: 'top',
+        buttons: [{
+            method: 'restyle',
+            args: ['visible', [true, false, false, false]],
+            label: 'Data set 0'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, true, false, false]],
+            label: 'Data set 1'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, false, true, false]],
+            label: 'Data set 2'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, false, false, true]],
+            label: 'Data set 3'
+        }]
+    }],
+});
+/*]]>*/
+    </script>
+</body>
+</html>

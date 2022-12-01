@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+*spring boot에서 HTML을 만드는 순서
+1. 타임리프 문법을 쓰므로 네임스페이스 정의 xmlns:th="http://thymeleaf.org"
+----xmlns : xml포맷 기준으로 네임스페이스 정의
+----:th : 자바로 따지면 변수명 (하단에 th라고 쓰면 =(대입연산자) 우측에 있는 문법을 쓴다는 선언, 정의)
+----="http://thymeleaf.org" : 타임리프 사이트에서 문법적인 내용을 가져다가 대입연산자 좌측에 있는 th에 연결, 할당
+2. <Link>와 같은 환경 설정 : 본 페이지에 필요한 라이브러리, 환경import를 설정 + UTF-8과 같은 언어 설정
+*.. : 본인위치에서 찾아가는 상대적 경로(상대경로), / : 절대경로 (root(기본)으로 지정된 위치)
+-->
+
+<!--
+*HTML, CSS 공부 하는 방법 (예쁘게 디자인하는 방법) : 클론코딩
+-->
+
+<!--
+1. 헤더의 좌측 tag에는 index(/)위치 링크, 포트폴리오 입력 링크, 포트폴리오 목록 링크를 만드시오 (<a>, <img>..)
+2. 헤더의 우측 tag에는 회원가입, 로그인 링크 버튼을 만드시오
+3. main(center) 레이아웃에는 포트폴리오의 제목, 포트폴리오의 설명, 포트폴리오 샘플이미지 링크를 출력하는 테이블을 만드시오
+ex) 소스파일의 경우에 대표 코드, 그래프에 대한 부가 설명
+-->
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/list_portfolio.css">
+</head>
+<body>
+<div class="ssg_header_mini">
+    <div class="ssg_header_inner">
+        <div class="ssg_gnb_main">
+            <h1 class="ssg_gnb_logo">
+                <a href="https://localhost:8080/" class="ssg_logo_link clickable">MyHome</a>
+            </h1>
+            <div class="ssg_gnb_search">
+                <a href="https://localhost:8080/listPortfolio" class="ssg_logo_link clickable">
+                    InsertPage
+                </a>
+            </div>
+            <div class="ssg_gnb_search">
+                <a href="https://localhost:8080/insertPortfolio" class="ssg_logo_link clickable">
+                    ListPage
+                </a>
+            </div>
+        </div>
+
+        <div class="gnb_renew_menu">
+            <ul>
+                <li>
+                    <a href="https://localhost:8080/login">
+                        <img src="icon/account_signin.png" alt="로그인">
+                    </a>
+                </li>
+                <li><a href="https://localhost:8080/insertAccount">
+                    <img src="icon/account_signup.png" alt="회원가입">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="ssg_header_inner">
+<table>
+  <tr>
+    <th>제목</th>
+    <th>내용</th>
+    <th>링크</th>
+  </tr>
+  <tr th:each="item : ${arr}">
+      <td th:text="${item.getTitle()}"></td>
+      <td th:text="${item.getSubject()}"></td>
+<!--      @{} : URL주소로 이동 -->
+      <td><a th:href="@{${item.getLink()}}">소스파일 보기</a></td>
+  </tr>
+</table>
+</div>
+<a href="/insertPortfolio">포트폴리오 작성하기</a>
+</body>
+</html>
