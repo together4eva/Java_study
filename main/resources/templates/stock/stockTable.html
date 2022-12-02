@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+<!--  <META HTTP-EQUIV="refresh" CONTENT="20">-->
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="/css/common.css">
+  <link rel="stylesheet" type="text/css" href="/css/graph/progress.css">
+<!--
+<script> 스크립트 코드를 작성 선언 : 메인 솔루션을 핸들링하거나 덧붙히는 코드를 일컫음
+cdn : Content Delivery Network 약자로 리소스(이미지, 자바스크립트 등 정적 데이터)를 저장하는 서버
+*똑같은 서버를 여러대 두어서 가장 가까운 서버의 정보를 받아오도록 구성하는 네트워크 시스템
+-->
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+</head>
+<body>
+<!--header area-->
+<div class="ssg_header_mini">
+  <div class="ssg_header_inner">
+    <div class="ssg_gnb_main">
+      <h1 class="ssg_gnb_logo">
+        <a href="http://localhost:8080/" class="ssg_logo_link clickable">MyHome</a>
+      </h1>
+      <div class="ssg_gnb_search">
+        <a href="http://localhost:8080/listPortfolio" class="ssg_logo_link clickable">
+          InsertPage
+        </a>
+      </div>
+      <div class="ssg_gnb_search">
+        <a href="http://localhost:8080/insertPortfolio" class="ssg_logo_link clickable">
+          ListPage
+        </a>
+      </div>
+    </div>
+
+    <div class="gnb_renew_menu">
+      <ul>
+        <li>
+          <a href="http://localhost:8080/login">
+            <img src="icon/account_signin.png" alt="로그인">
+          </a>
+        </li>
+        <li><a href="http://localhost:8080/insertAccount">
+          <img src="icon/account_signup.png" alt="회원가입">
+        </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--main side-->
+<div>
+
+</div>
+<!--main area plotly-->
+<div class="ssg_header_mini">
+  <div class="ssg_header_inner" style="justify-content : center;">
+    <div class="ssg_gnb_main">
+      <div id='myDivSamsung'></div>
+    </div>
+    <div class="ssg_gnb_main">
+      <div id='myDivApple'></div>
+    </div>
+    <div class="ssg_gnb_main">
+      <div id='myDivTesla'></div>
+    </div>
+  </div>
+</div>
+<!--main area custom bar graph-->
+<!--
+  @GetMapping("/stockTable")에서
+  model에 th:attrappend="style=${progress_bar_samsung}"에 넣을 value값을 지정하여 그래프를 출력하시오.
+  ---- 1주당 가장 비싼 주식이 100%비율로 할 때 가장 작은 금액으로 살 수 있는 주식을 퍼센트로 구성하여
+  ---- 막대 그래프 하얀색 바에 표기하시오
+  >>>> (max width는 500px일 경우)
+  >>>> 가장 비싼 1주 주식 : 20000원, 가장 싼 주식이 10000원일 경우, progress_bar_samsung key값에는 50%인 250px을 전달
+-->
+<div class="ssg_header_mini">
+  <div class="progress-body" th:each="item : ${progress_array}">
+
+    <p class="background-black-font-color">data1</p>
+      <div class="progress">
+        <div class="progress-value" th:attrappend="style=${item}">
+        </div>
+      </div>
+
+
+  </div>
+</div>
+
+<!--main area table-->
+<div class="flex-content-center">
+
+  <div>
+    <table border="1">
+      <tr>
+        <th>회사명</th>
+        <th>시각</th>
+        <th>구매 주식 갯수</th>
+        <th>구매 가격</th>
+      </tr>
+      <tr th:each="item : ${stock_logs}">
+        <td th:text="${item.getCompany_name()}"></td>
+        <td th:text="${item.getTime()}"></td>
+        <td th:text="${item.getBuy_count()}"></td>
+        <td th:text="${item.getBuy_one_stock_price()}"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<script th:inline="javascript">
+        var trace1 = {
+            type: 'bar',
+            marker: {
+                color: '#C8A2C8',
+                line: {
+                    width: 2.5
+                 }
+            }
+        };
+
+       trace1.x = /*[[${xdataSamsung}]]*/
+       trace1.y = /*[[${ydataSamsung}]]*/
+
+        var data1 = [ trace1 ];
+
+        var layout1 = {
+            title: '삼성전자 구매 그래프',
+            font: {size: 18},
+            width: 300,
+            height: 300
+        };
+
+        var config = {responsive: true}
+        Plotly.newPlot('myDivSamsung', data1, layout1, config );
+
+
+        var trace2 = {
+            type: 'bar',
+            marker: {
+                color: '#C8A2C8',
+                line: {
+                    width: 2.5
+                 }
+            }
+        };
+
+       trace2.x = /*[[${xdataApple}]]*/
+       trace2.y = /*[[${ydataApple}]]*/
+
+        var data2 = [ trace2 ];
+
+        var layout2 = {
+            title: '애플 구매 그래프',
+            font: {size: 18},
+            width: 300,
+            height: 300
+        };
+       Plotly.newPlot('myDivApple', data2, layout2, config );
+
+
+       var trace3 = {
+            type: 'bar',
+            marker: {
+                color: '#C8A2C8',
+                line: {
+                    width: 2.5
+                 }
+            }
+        };
+
+       trace3.x = /*[[${xdataTesla}]]*/
+       trace3.y = /*[[${ydataTesla}]]*/
+
+        var data3 = [ trace3 ];
+
+        var layout3 = {
+            title: '테슬라 구매 그래프',
+            font: {size: 18},
+            width: 300,
+            height: 300
+        };
+       Plotly.newPlot('myDivTesla', data3, layout3, config );
+
+    </script>
+</body>
+</html>
+<!--
+  stockTable.html에 graph를 그리기
+  1. 테슬라, 애플 데이터를 그래프로 그리기
+  1-1. 배치, 구성을 1열로 (가장 상단으로(header뒤에)) 출력
+  1-2. 최신 시각으로 100개의 데이터만 표로 출력
+  ---- time필드값 중에 가장 높은 숫자들(정렬 혹은 stockLogs 중 가장 뒤에 있는 값 100) 100개를 출력해서 배열에 담아 model로 전달
+  ---- 가장 최신 데이터는 뒤에 있기 때문
+-->

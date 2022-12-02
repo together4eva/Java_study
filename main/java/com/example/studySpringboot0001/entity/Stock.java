@@ -1,7 +1,5 @@
 package com.example.studySpringboot0001.entity;
 
-import java.util.HashMap;
-
 public class Stock {
     //필드
     private String company_name;

@@ -1,12 +1,5 @@
 package com.example.studySpringboot0001.entity;
 
-import com.example.studySpringboot0001.component.Account;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.Bean;
-
-import java.beans.BeanProperty;
-import java.beans.JavaBean;
-
 //extends Account : Account를 부모클래스로 상속받음
 public class PortfolioEntity extends Account {
     //필드 : 데이터

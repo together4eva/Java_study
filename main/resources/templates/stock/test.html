@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+<!--  <META HTTP-EQUIV="refresh" CONTENT="20">-->
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="./progress.css">
+<!--
+<script> 스크립트 코드를 작성 선언 : 메인 솔루션을 핸들링하거나 덧붙히는 코드를 일컫음
+cdn : Content Delivery Network 약자로 리소스(이미지, 자바스크립트 등 정적 데이터)를 저장하는 서버
+*똑같은 서버를 여러대 두어서 가장 가까운 서버의 정보를 받아오도록 구성하는 네트워크 시스템
+-->
+</head>
+<body>
+
+
+<!--main area custom bar graph-->
+<div class="ssg_header_mini">
+  <div class="ssg_header_inner">
+    <div class="ssg_gnb_main">
+<!--      막대그래프 출력-->
+      <div class="progress">
+<!--        막대그래프 value값-->
+        <div class="progress-value">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+<!--
+  stockTable.html에 graph를 그리기
+  1. 테슬라, 애플 데이터를 그래프로 그리기
+  1-1. 배치, 구성을 1열로 (가장 상단으로(header뒤에)) 출력
+  1-2. 최신 시각으로 100개의 데이터만 표로 출력
+  ---- time필드값 중에 가장 높은 숫자들(정렬 혹은 stockLogs 중 가장 뒤에 있는 값 100) 100개를 출력해서 배열에 담아 model로 전달
+  ---- 가장 최신 데이터는 뒤에 있기 때문
+-->

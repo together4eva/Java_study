@@ -11,15 +11,15 @@
     <div class="ssg_header_inner">
         <div class="ssg_gnb_main">
             <h1 class="ssg_gnb_logo">
-                <a href="https://localhost:8080/" class="ssg_logo_link clickable">MyHome</a>
+                <a href="http://localhost:8080/" class="ssg_logo_link clickable">MyHome</a>
             </h1>
             <div class="ssg_gnb_search">
-                <a href="https://localhost:8080/listPortfolio" class="ssg_logo_link clickable">
+                <a href="http://localhost:8080/listPortfolio" class="ssg_logo_link clickable">
                     InsertPage
                 </a>
             </div>
             <div class="ssg_gnb_search">
-                <a href="https://localhost:8080/insertPortfolio" class="ssg_logo_link clickable">
+                <a href="http://localhost:8080/insertPortfolio" class="ssg_logo_link clickable">
                     ListPage
                 </a>
             </div>
@@ -28,11 +28,11 @@
         <div class="gnb_renew_menu">
             <ul>
                 <li>
-                    <a href="https://localhost:8080/login">
+                    <a href="http://localhost:8080/login">
                         <img src="icon/account_signin.png" alt="로그인">
                     </a>
                 </li>
-                <li><a href="https://localhost:8080/insertAccount">
+                <li><a href="http://localhost:8080/insertAccount">
                     <img src="icon/account_signup.png" alt="회원가입">
                 </a>
                 </li>
@@ -41,46 +41,38 @@
     </div>
 </div>
 <!--main area-->
-<table>
+<div class="main_example" style="    display: grid;
+    justify-content: center;">
+<table border="1">
     <tr>
         <th>회사명</th>
         <th>1주당 가격</th>
         <th>남은 주식 갯수</th>
         <th>비고</th>
     </tr>
-    <tr>
-        <td>[[${stock_list.get("삼성전자").getCompany_name()}]]</td>
-        <td>[[${stock_list.get("삼성전자").getOne_stock_money()}]]</td>
-        <td>[[${stock_list.get("삼성전자").getStock_count()}]]</td>
+    <tr th:each="item : ${stock_list}">
+        <td th:text="${item.value.getCompany_name()}"></td>
+        <td th:text="${item.value.getOne_stock_money()}"></td>
+        <td th:text="${item.value.getStock_count()}"></td>
         <td>
             <form action="/stock_buy" method="get">
-                <input type="hidden" name="button1" value="삼성전자">
-                <button>구매</button>
+                <input type="hidden" name="company_name" th:value="${item.value.getCompany_name()}">
+                <input type="hidden" name="stock_buy_count" th:value="1">
+                <button>1주 구매</button>
+            </form>
+            <form action="/stock_buy" method="get">
+                <input type="hidden" name="company_name" th:value="${item.value.getCompany_name()}">
+                <input type="hidden" name="stock_buy_count" th:value="3">
+                <button>3주 구매</button>
+            </form>
+            <form action="/stock_buy" method="get">
+                <input type="hidden" name="company_name" th:value="${item.value.getCompany_name()}">
+                <input type="hidden" name="stock_buy_count" th:value="5">
+                <button>5주 구매</button>
             </form>
         </td>
     </tr>
-    <tr>
-        <td>[[${stock_list.get("애플").getCompany_name()}]]</td>
-        <td>[[${stock_list.get("애플").getOne_stock_money()}]]</td>
-        <td>[[${stock_list.get("애플").getStock_count()}]]</td>
-        <td>
-            <form action="/stock_buy" method="get">
-                <input type="hidden" name="button1" value="애플">
-                <button>구매</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>[[${stock_list.get("테슬라").getCompany_name()}]]</td>
-        <td>[[${stock_list.get("테슬라").getOne_stock_money()}]]</td>
-        <td>[[${stock_list.get("테슬라").getStock_count()}]]</td>
-        <td>
-            <form action="/stock_buy" method="get">
-                <input type="hidden" name="button1" value="테슬라">
-                <button>구매</button>
-            </form>
-        </td>
-    </tr>
+
 
 <!--
     1)
@@ -89,11 +81,10 @@
     2번 버튼을 누르면 5씩 감소,
     3번 버튼을 누르면 10씩 감소하는 버튼들을 각각 만드시오 (삼성전자, 애플, 테슬라마다 3개의 버튼 필요)
 
-    2) 1씩 감소할 때마다 1주당 가격(one_stock_money)이 1/100씩 줄어드는 계산식을 만들고(메서드를 만들어 실행) 적용하시오
+    2) 1씩 감소할 때마다 1주당 가격(one_stock_money)이 1/100씩 증가하는 계산식을 만들고(메서드를 만들어 실행) 적용하시오
     ----int는 정수 나오므로 소수점을 고려해서 적용필요
 -->
 </table>
-</form>
 </div>
 </body>
 </html>
