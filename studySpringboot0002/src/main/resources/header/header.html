@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:td="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--mission :
+studySpringboot0002로 controller로 이동하는 것이 아닌
+studySpringboot0001의 controller로 이동하도록 아래 코드를 완성하시오
+action="/account" : path영역
+action="???/account" : ??? = ip/port영역
+-->
+<form action="http://www.localhost:8090/signup" method="post">
+<p>id :    <input td:type ="text" name="input_id"></p>
+<p>pw :    <input td:type ="text" name="input_pw"></p>
+    <button>전송</button>
+</form>
+<div>
+    <a href="#">공백</a>
+    <a href="http://www.localhost:8090/api">링크</a>
+    <a href="http://www.localhost:8090/graph0011">graph 링크</a>
+    <a href="http://www.localhost:8090/api">링크</a>
+</div>
+<!--
+a태그로 경로 이동하는 href 를 활용하여,
+server1의 그래프를 출력하는 링크 2개를 연결하시오(server1이 @controller활용
+?key=value&key=value : key value 값을 server1의 controller전달 활용
+-->
+
+</body>
+</html>

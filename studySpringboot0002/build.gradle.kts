@@ -24,6 +24,8 @@ dependencies {
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	//JSON
+	implementation("org.json:json:20190722")
 }
 
 tasks.withType<Test> {

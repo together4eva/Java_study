@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class restController {
 
     @GetMapping("/positionData")
-    public Object positonData(){
+    public Object positionData() {
         return null;
     }
 
