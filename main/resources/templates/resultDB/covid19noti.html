@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="
+    height: 500px;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+">
+    <div style="
+    height: 100%;
+    width: 30%;
+    background-color: azure;
+    ">
+        sfty_notice_id
+        <div>
+            <table>
+                <tr>
+                    <td>continent_eng_nm</td>
+                    <td>sfty_notice_id</td>
+                </tr>
+                <tr th:each="item : ${result}">
+                    <td th:text="${item.getContinent_eng_nm}"></td>
+                    <td th:text="${item.getSfty_notice_id}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

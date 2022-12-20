@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+- header 영역
+- display : flex; justify-content: space-evenly;
+-->
+<div class="header_example" style="
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+">
+    <div style="
+    height: 100%;
+    width: 40%;
+    ">
+        <div>
+            <form action="/search" method="post">
+                <input th:type="text" name="search">
+                <button>검색하기</button>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<!--
+- main 영역
+- display : flex; justify-content: space-evenly;
+-->
+<div class="main_example" style="
+    width: 1220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+">
+    <!--
+    - tuple 영역 : main 영역의 한 줄
+    - display : flex;
+    -->
+    <div class="tuple_example" style="
+    height: 50%;
+    width: 100%;
+    display:flex;
+    ">
+        <table>
+            <tr>
+                <td>csvURL</td>
+                <td>subject</td>
+            </tr>
+            <tr th:each="item : ${searchCSVUrl}">
+                <td th:text="${item.getCsvURL}"></td>
+                <td th:text="${item.getSubject}"></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <!--
+    - tuple 영역 : main 영역의 한 줄
+    - display : flex;
+    -->
+    <div class="tuple_example" style="
+    height: 50%;
+    width: 100%;
+    display:flex;
+    ">
+        <table>
+            <tr>
+                <td>textHistory</td>
+                <td>ipAddress</td>
+                <td>updateTime</td>
+            </tr>
+            <tr th:each="item : ${searchHistory}">
+                <td th:text="${item.getTextHistory}"></td>
+                <td th:text="${item.getIpAddress}"></td>
+                <td th:text="${item.getUpdateTime}"></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
