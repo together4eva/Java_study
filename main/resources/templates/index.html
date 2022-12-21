@@ -3,233 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!--    progress_bar1-->
-    <link rel="stylesheet" type="text/css" href="/css/progress_bar1_example.css">
-    <!--    progress_bar2-->
-    <link rel="stylesheet" type="text/css" href="/css/progress_bar2.css">
-    <!--    plotly chart-->
-    <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/list_portfolio.css">
 </head>
 <body>
-<!--
-- header 영역
-- display : flex; justify-content: space-evenly;
--->
-<div class="header_example" style="
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-">
-    <div style="
-    height: 100%;
-    width: 40%;
-    ">
-        <div>
-            <form action="/search" method="post">
-                <input th:type="text" name="search">
-                <button>검색하기</button>
-            </form>
+<!--header layout-->
+<div class="ssg_header_mini react-area">
+    <div class="ssg_header_inner">
+        <div class="ssg_gnb_main">
+            <h1 class="ssg_gnb_logo">
+                <a href="https://localhost:8080/" class="ssg_logo_link clickable">MyHome</a>
+            </h1>
+            <div class="ssg_gnb_search">
+                <a href="https://localhost:8080/listPortfolio" class="ssg_logo_link clickable">
+                    InsertPage
+                </a>
+            </div>
+            <div class="ssg_gnb_search">
+                <a href="https://localhost:8080/insertPortfolio" class="ssg_logo_link clickable">
+                    ListPage
+                </a>
+            </div>
+        </div>
+
+        <div class="gnb_renew_menu">
+            <ul>
+                <li>
+                    <a href="https://localhost:8080/login">
+                        <img src="icon/icon_example1.png" alt="로그인">
+                    </a>
+                </li>
+                <li><a href="https://localhost:8080/insertAccount">회원가입</a></li>
+            </ul>
         </div>
     </div>
 </div>
-<hr>
-<!--
-- main 영역
-- display : flex; justify-content: space-evenly;
--->
-<div class="main_example" style="
-    width: 1220px;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-">
-    <!--
-    - tuple 영역 : main 영역의 한 줄
-    - display : flex;
-    -->
-    <div class="tuple_example" style="
-    height: 50%;
-    width: 100%;
-    display:flex;
-    ">
-        <!--
-        - column 영역 : main 영역의 tuple 영역의 한 칸
-        - display : flex;
-        -->
-        <div class="column_example" style="
-                width: 50%;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-        ">
-            <!--
-            - column 영역 : main 영역의 tuple 영역의 column 영역
-            - display : flex;
-            -->
-            <div style="
-                    display: flex;
-                    flex-direction: column;
-            ">
-                <!--
-                - progress_bar 영역 : row 한 줄 영역
-                -->
-                <div class="progress_bar1">
-                    <div class="progress_bar1-value" th:attrappend="style=${progress_bar_frame_option}"></div>
-                </div>
-                <div class="progress_bar1">
-                    <div class="progress_bar1-value"></div>
-                </div>
-                <div class="progress_bar1">
-                    <div class="progress_bar1-value" th:attrappend="style=${progress_bar_frame_option_test}"></div>
-                </div>
-            </div>
-        </div>
-        <div class="column_example" style="
-                width: 50%;
-        ">
-            <!--
-            - progress_bar 영역 : 입체 progress_bar 모형 영역
-            -->
-            <div class="progress_bar2_wrapper">
-                <div class="progress_bar2_progressbar">
-                    <!--
-                    - progress_bar 영역 : 입체 progress_bar 모형의 한 면 영역
-                    -->
-                    <div class="progress_bar2_side progress_bar2_side__front">
-                        <div class="progress_bar2_side__fill" th:attrappend="style=${bargraph2value}"></div>
-                    </div>
-                    <div class="progress_bar2_side progress_bar2_side__back">
-                        <div class="progress_bar2_side__fill" th:attrappend="style=${bargraph2value}"></div>
-                    </div>
-                    <div class="progress_bar2_side progress_bar2_side__top">
-                        <div class="progress_bar2_side__fill" th:attrappend="style=${bargraph2value}"></div>
-                    </div>
-                    <div class="progress_bar2_side progress_bar2_side__bottom">
-                        <div class="progress_bar2_side__fill" th:attrappend="style=${bargraph2value}"></div>
-                    </div>
-                    <div class="progress_bar2_side progress_bar2_side__left"></div>
-                </div>
-            </div>
-        </div>
+<div class="ssg_header_inner">
+    <div>
+        intro page
     </div>
-    <hr>
-    <div class="tuple_example" style="
-    height: 130%;
-    width: 100%;
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    ">
-        <div style="">
-            <!--
-            - plotly 영역 : plotly 라이브러리 활용 script에 연동되는 div
-            -->
-            <div id="myDiv"></div>
-        </div>
-    </div>
-    <hr>
-    <div class="tuple_example" style="
-    height: 130%;
-    width: 100%;
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    ">
-        <div style="">
-            <!--
-            - plotly 영역 : plotly 라이브러리 활용 script에 연동되는 div
-            -->
-            <div id="myDiv_linear_graph_example"></div>
-        </div>
-    </div>
-
 </div>
-
-<script th:inline="javascript">
-    console.log(/*[[${linear_graph_value}]]*/);
-    function makeTrace(i) {
-        return {
-            y: /*[[${linear_graph_value}]]*/,
-            line: {
-                shape: 'spline' ,
-                color: 'red'
-            },
-            visible: i === 0,
-            name: 'Data set ' + i,
-        };
-    }
-
-Plotly.newPlot('myDiv', [0, 1, 2, 3].map(makeTrace), {
-    updatemenus: [{
-        y: 0.8,
-        yanchor: 'top',
-        buttons: [{
-            method: 'restyle',
-            args: ['line.color', 'red'],
-            label: 'red'
-        }, {
-            method: 'restyle',
-            args: ['line.color', 'blue'],
-            label: 'blue'
-        }, {
-            method: 'restyle',
-            args: ['line.color', 'green'],
-            label: 'green'
-        }]
-    }, {
-        y: 1,
-        yanchor: 'top',
-        buttons: [{
-            method: 'restyle',
-            args: ['visible', [true, false, false, false]],
-            label: 'Data set 0'
-        }, {
-            method: 'restyle',
-            args: ['visible', [false, true, false, false]],
-            label: 'Data set 1'
-        }, {
-            method: 'restyle',
-            args: ['visible', [false, false, true, false]],
-            label: 'Data set 2'
-        }, {
-            method: 'restyle',
-            args: ['visible', [false, false, false, true]],
-            label: 'Data set 3'
-        }]
-    }],
-});
-
-
-
-var linear_trace1 = {
-  x: /*[[${linear_trace1_x_value}]]*/,
-  y: /*[[${linear_trace1_y_value}]]*/,
-  type: 'scatter'
-};
-
-var linear_trace2 = {
-  x: /*[[${linear_trace2_x_value}]]*/,
-  y: /*[[${linear_trace2_y_value}]]*/,
-  type: 'scatter'
-};
-
-var linear_data = [linear_trace1, linear_trace2];
-
-var linear_layout = {
-  xaxis: {
-    type: 'log',
-    autorange: true
-  },
-  yaxis: {
-    type: 'log',
-    autorange: true
-  }
-};
-
-Plotly.newPlot('myDiv_linear_graph_example', linear_data, linear_layout);
-
-    </script>
 </body>
 </html>
+<!--
+index.html : 다른 페이지에 연결하는 메인페이지
+--rps.html
+--account.html
+-->
+
+<!--
+    href : redirect 페이지 전환 연결 : 페이지 바꿔서 이동
+    "/hello" : localhost:8080/hello 로 연결
+-->
+
+
+
+
+<!--<div th:if="${not #strings.isEmpty(examData)}"> ... </div>-->
+
+<!--  <span th:if="${not #strings.isEmpty(user.id)}"
+th:text="${user.id}"></span>-->
+
+<!--<span th:if="${#strings.isEmpty(user.id)}"
+th:text="${넣고싶은내용}"></span>-->

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:if="${loginMessage.equals('login')}">로그인 하세요</p>
+<p th:if="${loginMessage.equals('success')}">로그인 성공!!!</p>
+<p th:if="${loginMessage.equals('fail')}">로그인 실패!!!</p>
+
+  <form action="/loginExample" method="post">
+    ID : <input type="text" name="input_id">
+    PW : <input type="text" name="pw">
+    <button>전달</button>
+  </form>
+</body>
+</html>

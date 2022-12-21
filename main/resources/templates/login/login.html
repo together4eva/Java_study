@@ -50,18 +50,33 @@
     if_alert();
     /*]]>*/
 </script>
-<p th:if="${fail_message.equals('로그인이 실패했습니다')}">로그인이 실패!!!</p>
-<div class="ssg_header_inner">
-  <div>
+<!--<p th:if="${fail_message.equals('로그인이 실패했습니다')}">로그인이 실패!!!</p>-->
+
+
+  <div class="main_outer">
+  <div class="main_inner">
     <form action="login" method="post">
       ID : <input type="text" name="id">
       PW : <input type="text" name="pw">
       <button>로그인</button>
     </form>
   </div>
+
   <div>
     <a href="/signup">회원가입</a>
   </div>
-</div>
+  </div>
+
+<table>
+  <tr th:each="item:${list}">
+    <td>
+<!--      <a th:text="${item.toString()}"></a>-->
+<!--      <a th:text="${item.name}"></a>-->
+      <a th:text="${item.getName()}"></a>
+    </td>
+
+  </tr>
+</table>
+
 </body>
 </html>
