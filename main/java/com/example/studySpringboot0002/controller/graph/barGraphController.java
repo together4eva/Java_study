@@ -70,15 +70,11 @@ public class barGraphController {
         model.addAttribute("bargraph2value", barGraphService.getBarGraph2Data(50));
         model.addAttribute("linear_graph_value", barGraphService.getLinear_graph_value());
 
-        //linear graph 2
+        //linear graph 2 & 3d graph
         model.addAttribute("linear_trace1_x_value", barGraphService.getLinear_graph2_x_value());
         model.addAttribute("linear_trace1_y_value", barGraphService.getLinear_graph2_y_value());
         model.addAttribute("linear_trace2_x_value", barGraphService.getLinear_graph2_y_value());
         model.addAttribute("linear_trace2_y_value", barGraphService.getLinear_graph2_x_value());
-
-
-
-
 
         //mission : @service에서 데이터를 받아서 controller model에 데이터를 넣고,
         // css / javascript 타임리프 문법으로 데이터를 넣어서 그래프를 완성하시오
