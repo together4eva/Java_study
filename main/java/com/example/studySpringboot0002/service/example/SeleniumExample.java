@@ -20,8 +20,7 @@ public class SeleniumExample {
     private static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
 
 //    private static final String WEB_DRIVER_PATH = "/Users/js/Cleancode/lecture_spring_2_crudProject/src/main/resources/static/tool/chromedriver";
-//    private static final String WEB_DRIVER_PATH = "D:/Cleancode/projectCovid19Server110/src/main/resources/static/tool/chromedriver.exe";
-    private static final String WEB_DRIVER_PATH = "D:/KIMJIHYEOK/chromedriver.exe";
+    private static final String WEB_DRIVER_PATH = "D:/Cleancode/projectCovid19Server110/src/main/resources/static/tool/chromedriver.exe";
     //메서드 매개변수로 받아서 스크래핑 동작을 위한 변수 선언
     private static String base_url;
 
@@ -49,7 +48,7 @@ public class SeleniumExample {
 //            System.out.println(driver.getPageSource());
 
             //tag search
-            elements_button = driver.findElements(By.className("placelist"));
+            elements_button = driver.findElements(By.className("screen_out"));
             System.out.println("------------------------------------------");
             System.out.println(elements_button.get(0).getText());
 //            int checkNum = 0;
@@ -80,6 +79,8 @@ public class SeleniumExample {
 //                System.out.println(e.getText());
 //            }
 
+
+            
         }catch (Exception e) {
             e.printStackTrace();
         }finally {

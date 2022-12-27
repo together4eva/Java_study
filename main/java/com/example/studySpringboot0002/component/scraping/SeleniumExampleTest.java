@@ -35,6 +35,9 @@ public class SeleniumExampleTest {
         base_url = "https://map.kakao.com/link/search/수원시청음식점";
         driver.get(base_url);
         List<WebElement> elements_button;
+        List<WebElement> elements_button1;
+        List<WebElement> elements_button2;
+        List<WebElement> elements_button3;
         try {
             Thread.sleep(10000);
 //            List<WebElement> elements_span = driver.findElements(By.tagName("span"));
@@ -48,14 +51,27 @@ public class SeleniumExampleTest {
 //            System.out.println(driver.getPageSource());
 
             //tag search
-            elements_button = driver.findElements(By.className("strong.tit_name"));
-            System.out.println("아아------------------------------------------");
-            System.out.println("아아------------------------------------------");
-            System.out.println("아아------------------------------------------");
-            System.out.println(elements_button.get(0).getText());
-            System.out.println("아아------------------------------------------");
-            System.out.println("아아------------------------------------------");
-            System.out.println("아아------------------------------------------");
+            elements_button = driver.findElements(By.className("link_name"));
+//            elements_button1 = driver.findElements(By.className("num"));
+            elements_button1 = driver.findElements(By.cssSelector("em[data-id='scoreNum']"));
+            elements_button2 = driver.findElements(By.className("numberofscore"));
+            elements_button3 = driver.findElements(By.cssSelector("em[data-id='numberofreview']"));
+
+            for (int i = 0; i < elements_button.size(); i++) {
+
+                String title = elements_button.get(i).getText();
+                String num = elements_button1.get(i).getText();
+                String numberofscore = elements_button2.get(i).getText();
+                String numberofreview = elements_button3.get(i).getText();
+
+                System.out.println("아아------------------------------------------");
+                System.out.println("음식점명 :"+title);
+                System.out.println("평점 :"+num);
+                System.out.println("평점 리뷰 수 :"+numberofscore);
+                System.out.println("리뷰 수 :"+numberofreview+"건");
+                System.out.println("아아------------------------------------------");
+            }
+
 //            int checkNum = 0;
 //
 //            for(WebElement e : elements_button) {
